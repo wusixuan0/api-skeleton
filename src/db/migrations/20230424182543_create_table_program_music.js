@@ -9,7 +9,7 @@ exports.up = function(knex) {
       table.increments('id').primary();
       table.string('program_title', 255).notNullable();
       table.string('program_type', 255).notNullable();
-      table.integer('skater_id').references('skaters.id').notNullable();
+      table.uuid('skater_id').references('id').inTable('skaters');
     })
     .createTable('program_music', function(table) {
       table.integer('program_id').references('programs.id').notNullable();
